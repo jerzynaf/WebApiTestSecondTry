@@ -1,0 +1,80 @@
+﻿@model MvcTest.Models.ViewModels.PersonViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <h1>Update @Model.FullName</h1>
+        <br/>
+        <fieldset>
+            <legend>User Details</legend>
+            @*Removing these hidden fields is not possible
+                http://stackoverflow.com/questions/15527293/pass-an-entire-model-on-form-submission
+            *@
+            @Html.HiddenFor(model => model.PersonId)
+            @Html.HiddenFor(model => model.FirstName)
+            @Html.HiddenFor(model => model.LastName)
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.IsAuthorised, new {@id = "IsAuthorised"})
+                @Html.LabelFor(model => model.IsAuthorised, htmlAttributes: new {@id = "IsAuthorisedLabel"})
+            </div>
+
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.IsEnabled, new {@id = "IsEnabled"})
+                @Html.LabelFor(model => model.IsEnabled, htmlAttributes: new {@id = "IsEnabledLabel"})
+            </div>
+
+        </fieldset>
+        <br/>
+        <fieldset>
+            <legend>Favourite Colours</legend>
+
+            @*Can't perform this loop with foreach
+                http://stackoverflow.com/questions/14165632/asp-net-mvc-4-for-loop-posts-model-collection-properties-but-foreach-does-not
+            *@
+            @for (var i = 0; i < Model.Colours.Count; i++)
+            {
+                @Html.Label(Model.Colours.ElementAt(i).Name)
+                <br/>
+                @Html.CheckBoxFor(a => Model.Colours[i].IsChecked)
+                @Html.HiddenFor(a => Model.Colours[i].ColourId)
+                @Html.HiddenFor(a => Model.Colours[i].Name)
+                <br/>
+            }
+
+        </fieldset>
+        <div>
+            <input type="submit" value="Save Changes" class="btn btn-default"/>
+            @Html.ActionLink("Cancel", "Index", "People", null, new {@class = "btn btn-default"})
+        </div>
+    }
+
+    <div>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#IsAuthorisedLabel").click(function(event) {
+                event.preventDefault();
+                $("#IsAuthorised").toggle();
+            });
+
+            $("#IsEnabledLabel").click(function(event) {
+                event.preventDefault();
+                $("#IsEnabled").toggle();
+            });
+
+        });
+    </script>
+}
