@@ -27,7 +27,7 @@
     },
 
     getPersonEntity: function (personId) {
-      var person = new Entities.Contact({ id: personId });
+      var person = new Entities.Person({ id: personId });
       var defer = $.Deferred();
 
       person.fetch({

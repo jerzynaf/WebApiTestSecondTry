@@ -11,7 +11,6 @@
 
     <div id="app-container">
         <div id="main-region" class="container">
-            <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
         </div>
     </div>
 
@@ -47,6 +46,33 @@
         There is no people in the database.
     </script>
 
+    <script type="text/template" id="Person-form">
+        <h1>Update <%=fullName%></h1>
+        <fieldset>
+            <legend>User Details</legend>
+            <div class="form-group form-inline">
+                <input type="checkbox" id="Is-authorised" name="isAuthorised"<%=isAuthorised===true?'checked':''%>/>
+                <label id="Is-authorised-label">Authorised</label>
+            </div>
+            <div class="form-group form-inline">
+                <input type="checkbox" id="Is-enabled" name="isEnabled"<%=isEnabled===true?'checked':''%>/>
+                <label id="Is-enabled-label">Enabled</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Favourite Colours</legend>
+            <div id="Favourite-colours"></div>
+        </fieldset>
+        <button class="btn js-saveChanges">Save changes</button>
+        <button class="btn js-cancel">Cancel</button>
+    </script>
+
+    <script type="text/template" id="Colour">
+        <div class="form-group form-inline">
+            <input type="checkbox"<%=isChecked===true?'checked':''%>/><%-name%>
+        </div>
+    </script>
+
     <script src="Assets/js/vendor/jquery.js"></script>
     <script src="Assets/js/vendor/json2.js"></script>
     <script src="Assets/js/vendor/underscore.js"></script>
@@ -61,7 +87,9 @@
     <script src="Assets/js/apps/people/people_app.js"></script>
     <script src="Assets/js/apps/people/list/list_views.js"></script>
     <script src="Assets/js/apps/people/list/list_controller.js"></script>
-
+    <script src="Assets/js/apps/people/edit/edit_views.js"></script>
+    <script src="Assets/js/apps/people/edit/edit_controller.js"></script>
+    <script src="Assets/js/entities/colour.js"></script>
     <script type="text/javascript">
         PeopleManager.start();
     </script>

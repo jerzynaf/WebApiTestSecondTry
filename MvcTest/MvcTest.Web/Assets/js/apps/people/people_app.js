@@ -12,7 +12,7 @@
     },
 
     editPerson: function (id) {
-      PeopleApp.Show.Controller.editPerson(id);
+      PeopleApp.Edit.Controller.editPerson(id);
     }
   };
 

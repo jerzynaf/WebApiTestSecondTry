@@ -134,11 +134,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\apps\people\edit\edit_controller.js" />
+    <Content Include="Assets\js\apps\people\edit\edit_views.js" />
     <Content Include="Assets\js\apps\people\list\list_controller.js" />
     <Content Include="Assets\js\apps\people\list\list_views.js" />
     <Content Include="Assets\js\apps\people\list\yesNo.js" />
     <Content Include="Assets\js\apps\people\people_app.js" />
     <Content Include="Assets\js\common\spinner.js" />
+    <Content Include="Assets\js\entities\colour.js" />
     <Content Include="Assets\js\entities\person.js" />
     <Content Include="Assets\js\vendor\backbone.js" />
     <Content Include="Assets\js\vendor\backbone.marionette.js" />
